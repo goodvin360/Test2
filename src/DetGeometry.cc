@@ -224,6 +224,32 @@ logicWorld->SetVisAttributes(G4VisAttributes::Invisible);
 //                      false,
 //                      0);
 
+    G4String name, symbol;
+    G4double a, z, det_density;
+    G4int ncomponents;
+    G4int natoms;
+    a = 80.9058*g/mole;
+    G4Element*elY = new G4Element(name="Yttrium", symbol="Y", z = 39., a);
+    a = 26.9816*g/mole;
+    G4Element*elAl = new G4Element(name="Aluminium", symbol="Al", z = 13., a);
+    a = 16*g/mole;
+    G4Element*elO = new G4Element(name="Oxygen", symbol="O", z = 8., a);
+    det_density = 5.37*g/cm3;
+    G4Material*det_mat2 = new G4Material(name="Gen Wall", det_density, ncomponents = 3);
+    det_mat2->AddElement(elY, natoms = 1);
+    det_mat2->AddElement(elAl, natoms = 1);
+    det_mat2->AddElement(elO, natoms = 3);
+
+    G4Element *Y = nist->FindOrBuildElement("Y");
+    G4Element *Al = nist->FindOrBuildElement("Al");
+    G4Element *O = nist->FindOrBuildElement("O");
+    G4Material *YAP = new G4Material("YAP", 5.37*g/cm3,3, kStateSolid);
+    YAP->AddElement(Y,1);
+    YAP->AddElement(Al,1);
+    YAP->AddElement(O,3);
+
+
+
 //    create an CYLLINDER detector
 
     G4Material*det_mat = nist->FindOrBuildMaterial("G4_STILBENE");
@@ -232,7 +258,7 @@ logicWorld->SetVisAttributes(G4VisAttributes::Invisible);
 
     G4Tubs*det = new G4Tubs("Detector", 0.0*cm, 2.525*cm, 1.565*cm,  0*deg, 360*deg);
 
-    G4LogicalVolume*logicDet = new G4LogicalVolume(det, det_mat, "Detector");
+    G4LogicalVolume*logicDet = new G4LogicalVolume(det, YAP, "Detector");
 
     G4VisAttributes*logicVisDet = new G4VisAttributes(G4Colour(1.0, 0.0, 0.0));
 
