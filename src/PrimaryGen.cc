@@ -29,7 +29,7 @@ PrimaryGen::PrimaryGen()
    gun->SetNumberOfParticles(1);
 
 #ifdef SingleEnergy
-    gun->SetParticleEnergy(1.173*MeV);
+    gun->SetParticleEnergy(1.25*MeV);
 #endif
 
 #ifdef OuterSpectra

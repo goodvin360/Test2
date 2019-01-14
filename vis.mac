@@ -50,7 +50,7 @@
 /vis/geometry/set/visibility logicWorld 0 false
 /vis/viewer/set/style wireframe
 /vis/viewer/set/hiddenMarker true
-/vis/viewer/set/viewpointThetaPhi 90 0
+/vis/viewer/set/viewpointThetaPhi 0 0
 
 # Re-establish auto refreshing and verbosity:
 /vis/viewer/set/autoRefresh true

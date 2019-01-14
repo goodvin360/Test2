@@ -13,11 +13,14 @@ void StepAct::UserSteppingAction(const G4Step *aStep)
 {
 
 
-    if ( (aStep->GetTrack()->GetVolume()->GetLogicalVolume()->GetName() =="Source") &&
-            (aStep->GetTrack()->GetParticleDefinition()->GetParticleName() == "gamma"))
+    if ( (aStep->GetTrack()->GetVolume()->GetLogicalVolume()->GetName() =="scin_YAP_log")
+
+//         &&
+//            (aStep->GetTrack()->GetParticleDefinition()->GetParticleName() == "gamma")
+            )
 
     {
-        event->AddEnDep1(aStep->GetTrack()->GetKineticEnergy());
+        event->AddEnDep1(aStep->GetTotalEnergyDeposit());
     };
 
 
@@ -25,22 +28,18 @@ void StepAct::UserSteppingAction(const G4Step *aStep)
 
     if
     (
-    (aStep->GetTrack()->GetVolume()->GetLogicalVolume()->GetName() =="Detector")
+    (aStep->GetTrack()->GetVolume()->GetLogicalVolume()->GetName() =="scin_CH_log")
 
-     &&
-
-    (aStep->GetTrack()->GetParticleDefinition()->GetParticleName() == "e-")
-
-     &&
-
-    (aStep->GetNumberOfSecondariesInCurrentStep() == 0)
+//     &&
+//
+//    (aStep->GetTrack()->GetParticleDefinition()->GetParticleName() == "gamma")
 
     )
     {
         event->AddEnDep2(aStep->GetTotalEnergyDeposit());
 
 
-
+//
 //        cout << "VertexKineticEnergy =  " << aStep->GetTrack()->GetVertexKineticEnergy()<< '\n';
 //        cout << "Step Lenght = " << aStep->GetStepLength()<< '\n';
 //        cout << "Track Lenght = " << aStep->GetTrack()->GetTrackLength() << '\n';
