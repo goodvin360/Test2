@@ -13,14 +13,14 @@ void StepAct::UserSteppingAction(const G4Step *aStep)
 {
 
 
-    if ( (aStep->GetTrack()->GetVolume()->GetLogicalVolume()->GetName() =="scin_YAP_log")
+    if ( (aStep->GetTrack()->GetVolume()->GetLogicalVolume()->GetName() =="Source")
 
 //         &&
 //            (aStep->GetTrack()->GetParticleDefinition()->GetParticleName() == "gamma")
             )
 
     {
-        event->AddEnDep1(aStep->GetTotalEnergyDeposit());
+        event->AddEnDep1(aStep->GetTrack()->GetKineticEnergy());
     };
 
 
@@ -28,15 +28,12 @@ void StepAct::UserSteppingAction(const G4Step *aStep)
 
     if
     (
-    (aStep->GetTrack()->GetVolume()->GetLogicalVolume()->GetName() =="scin_CH_log")
+    (aStep->GetTrack()->GetVolume()->GetLogicalVolume()->GetName() == "OuSpDetector")
+            )
 
-//     &&
-//
-//    (aStep->GetTrack()->GetParticleDefinition()->GetParticleName() == "gamma")
-
-    )
     {
-        event->AddEnDep2(aStep->GetTotalEnergyDeposit());
+
+                event->AddEnDep2(aStep->GetTotalEnergyDeposit());
 
 
 //

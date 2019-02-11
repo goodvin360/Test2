@@ -19,6 +19,7 @@ G4Loader::G4Loader(int argc, char** argv){
 
 
     auto Bert_Phys = new QGSP_BERT_HP;
+//    auto Bert_Phys = new QBBC;
     runManager->SetUserInitialization(Bert_Phys);
 
     runManager->SetUserInitialization(new ActionInit());
