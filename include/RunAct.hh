@@ -28,8 +28,8 @@ public:
 
     int nStep = 2000;
     G4double Emax = 20.0*MeV;
-    double a = 1;
-    double b = 5;
+    double a = 0.001;
+    double b = 0.005;
 
 
 private:

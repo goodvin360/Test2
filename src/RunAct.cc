@@ -87,8 +87,8 @@ void RunAct::EndOfRunAction(const G4Run *aRun)
 
     for (int i=0; i<nStep; i++)
     {
-        //Sigma[i] = a+b/sqrt(Energy[i]);
-        Sigma[i] = 0.0001;
+        Sigma[i] = a+b/sqrt(Energy[i]);
+//        Sigma[i] = 0.0001;
     }
 
     for (int i = 0; i < nStep; i++)

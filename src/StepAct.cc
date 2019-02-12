@@ -29,11 +29,14 @@ void StepAct::UserSteppingAction(const G4Step *aStep)
     if
     (
     (aStep->GetTrack()->GetVolume()->GetLogicalVolume()->GetName() == "OuSpDetector")
+    &&(aStep->GetTrack()->GetParticleDefinition()->GetParticleName() != "neutron")
+
             )
 
     {
 
-                event->AddEnDep2(aStep->GetTotalEnergyDeposit());
+//                event->AddEnDep2(aStep->GetTrack()->GetKineticEnergy());
+        event->AddEnDep2(aStep->GetTotalEnergyDeposit());
 
 
 //

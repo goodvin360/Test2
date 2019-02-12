@@ -182,7 +182,7 @@ logicWorld->SetVisAttributes(G4VisAttributes::Invisible);
 
     G4ThreeVector OuSp_det_pos = G4ThreeVector(0*cm, 0*cm, 0*cm);
 
-    G4Sphere*OuSp_det = new G4Sphere("OuSpDetector", 15*OuSp_size_of_det, 35*OuSp_size_of_det, 0.*deg, 360.*deg, 0.*deg, 90.*deg);
+    G4Sphere*OuSp_det = new G4Sphere("OuSpDetector", 15*OuSp_size_of_det, 16*OuSp_size_of_det, 0.*deg, 360.*deg, 0.*deg, 90.*deg);
 
     G4LogicalVolume*logicOuSpDet = new G4LogicalVolume(OuSp_det, OuSp_det_mat, "OuSpDetector");
 
