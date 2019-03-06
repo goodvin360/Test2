@@ -155,7 +155,7 @@ logicWorld->SetVisAttributes(G4VisAttributes::Invisible);
 
     G4double size_of_sourse = 1*cm;
 
-    G4ThreeVector InSp_det_pos = G4ThreeVector(0*cm, 0*cm, 10*cm);
+    G4ThreeVector InSp_det_pos = G4ThreeVector(0*cm, 0*cm, 0*cm);
 
     G4Box*InSp_det = new G4Box("Source", 0.05*size_of_sourse, 0.05*size_of_sourse, 0.05*size_of_sourse);
 
@@ -176,28 +176,28 @@ logicWorld->SetVisAttributes(G4VisAttributes::Invisible);
 
     // create an OUTER SPHERE detector
 
-    G4Material*OuSp_det_mat = nist->FindOrBuildMaterial("G4_BGO");
-
-    G4double OuSp_size_of_det = 1*cm;
-
-    G4ThreeVector OuSp_det_pos = G4ThreeVector(0*cm, 0*cm, 0*cm);
-
-    G4Sphere*OuSp_det = new G4Sphere("OuSpDetector", 15*OuSp_size_of_det, 16*OuSp_size_of_det, 0.*deg, 360.*deg, 0.*deg, 90.*deg);
-
-    G4LogicalVolume*logicOuSpDet = new G4LogicalVolume(OuSp_det, OuSp_det_mat, "OuSpDetector");
-
-    G4VisAttributes*logicOutSpDet = new G4VisAttributes(G4Colour(1.0, 0.0, 0.0));
-
-    logicOuSpDet->SetVisAttributes(logicOutSpDet);
-
-
-    new G4PVPlacement(0,
-                      OuSp_det_pos,
-                      logicOuSpDet,
-                      "OuSpDetector",
-                      logicWorld,
-                      false,
-                      0);
+//    G4Material*OuSp_det_mat = nist->FindOrBuildMaterial("G4_BGO");
+//
+//    G4double OuSp_size_of_det = 1*cm;
+//
+//    G4ThreeVector OuSp_det_pos = G4ThreeVector(0*cm, 0*cm, 0*cm);
+//
+//    G4Sphere*OuSp_det = new G4Sphere("OuSpDetector", 15*OuSp_size_of_det, 16*OuSp_size_of_det, 0.*deg, 360.*deg, 0.*deg, 90.*deg);
+//
+//    G4LogicalVolume*logicOuSpDet = new G4LogicalVolume(OuSp_det, OuSp_det_mat, "OuSpDetector");
+//
+//    G4VisAttributes*logicOutSpDet = new G4VisAttributes(G4Colour(1.0, 0.0, 0.0));
+//
+//    logicOuSpDet->SetVisAttributes(logicOutSpDet);
+//
+//
+//    new G4PVPlacement(0,
+//                      OuSp_det_pos,
+//                      logicOuSpDet,
+//                      "OuSpDetector",
+//                      logicWorld,
+//                      false,
+//                      0);
 
    //// create an BOX detector
 
@@ -252,11 +252,11 @@ logicWorld->SetVisAttributes(G4VisAttributes::Invisible);
 
 //    create an CYLLINDER detector
 
-    G4Material*det_mat = nist->FindOrBuildMaterial("G4_C");
+    G4Material*det_mat = nist->FindOrBuildMaterial("G4_BGO");
 
-    G4ThreeVector det_pos = G4ThreeVector(0*cm, 0*cm, 5*cm);
+    G4ThreeVector det_pos = G4ThreeVector(0*cm, 0*cm, 10*cm);
 
-    G4Tubs*det = new G4Tubs("Detector", 0.0*cm, 1.525*cm, 1.565*cm,  0*deg, 360*deg);
+    G4Tubs*det = new G4Tubs("Detector", 0.0*cm, 2.5*cm, 5*cm,  0*deg, 360*deg);
 
     G4LogicalVolume*logicDet = new G4LogicalVolume(det, det_mat, "Detector");
 

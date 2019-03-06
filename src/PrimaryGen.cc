@@ -24,7 +24,7 @@ PrimaryGen::PrimaryGen()
 
 
    gun = new G4ParticleGun(1);
-   gun->SetParticleDefinition(G4Neutron::Neutron());
+   gun->SetParticleDefinition(G4Gamma::Gamma());
 
    gun->SetNumberOfParticles(1);
 
@@ -206,16 +206,16 @@ void PrimaryGen::GeneratePrimaries(G4Event* anEvent)
 
     //set the cylinder beam particle distribution
 
-    G4double R=0.1*cm;
-    G4double cosTheta = 2*G4UniformRand()-1., phi = twopi*G4UniformRand();
-    G4double sinTheta = std::sqrt(1. - cosTheta*cosTheta);
-    G4double ux = R*sinTheta*std::sin(phi),
-            uy = R*cosTheta,
-            uz = 10*cm;
-
-    gun->SetParticlePosition(G4ThreeVector(ux,uy,uz));
-
-    gun->SetParticleMomentumDirection(G4ThreeVector(0,0,-1));
+//    G4double R=0.1*cm;
+//    G4double cosTheta = 2*G4UniformRand()-1., phi = twopi*G4UniformRand();
+//    G4double sinTheta = std::sqrt(1. - cosTheta*cosTheta);
+//    G4double ux = R*sinTheta*std::sin(phi),
+//            uy = R*cosTheta,
+//            uz = 10*cm;
+//
+//    gun->SetParticlePosition(G4ThreeVector(ux,uy,uz));
+//
+//    gun->SetParticleMomentumDirection(G4ThreeVector(0,0,-1));
 
     //set the square beam particle distribution
 
@@ -231,20 +231,21 @@ void PrimaryGen::GeneratePrimaries(G4Event* anEvent)
 
 
 
-//    gun->SetParticlePosition(G4ThreeVector(0,0,0));
+    gun->SetParticlePosition(G4ThreeVector(0,0,0));
 
-//    double a,b,c, Norm, dX, dY, dZ;
-//
-//    a = 2*G4UniformRand()-1;
-//    b = 2*G4UniformRand()-1;
-//    c = 2*G4UniformRand()-1;
-//
-//    Norm = a*a+b*b+c*c;
-//    dX = a/Norm;
-//    dY = b/Norm;
-//    dZ = c/Norm;
-//
-//    gun->SetParticleMomentumDirection(G4ThreeVector(dX,dY,dZ));
+    double a,b,c, Norm, dX, dY, dZ;
+
+    a = 2*G4UniformRand()-1;
+    b = 2*G4UniformRand()-1;
+    c = 2*G4UniformRand()-1;
+    Norm = std::sqrt(a*a+b*b+c*c);
+    dX = a/Norm;
+    dY = b/Norm;
+    dZ = c/Norm;
+
+    gun->SetParticleMomentumDirection(G4ThreeVector(dX,dY,dZ));
+//    gun->SetParticleMomentumDirection(G4ThreeVector(0,0,1));
+
 
     gun->GeneratePrimaryVertex(anEvent);
 

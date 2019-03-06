@@ -28,7 +28,7 @@ void EventAct::EndOfEventAction(const G4Event *anEvent)
 
 void EventAct::AddEnDep1(G4double en1)
 {
-    EnergyDep1 += en1;
+    EnergyDep1 = en1;
 }
 
 void EventAct::AddEnDep2(G4double en2)

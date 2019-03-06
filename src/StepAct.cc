@@ -13,23 +13,18 @@ void StepAct::UserSteppingAction(const G4Step *aStep)
 {
 
 
-    if ( (aStep->GetTrack()->GetVolume()->GetLogicalVolume()->GetName() =="Source")
-
-//         &&
-//            (aStep->GetTrack()->GetParticleDefinition()->GetParticleName() == "gamma")
-            )
+    if (aStep->GetTrack()->GetVolume()->GetLogicalVolume()->GetName() =="Source")
 
     {
         event->AddEnDep1(aStep->GetTrack()->GetKineticEnergy());
     };
 
 
-
-
     if
     (
-    (aStep->GetTrack()->GetVolume()->GetLogicalVolume()->GetName() == "OuSpDetector")
-    &&(aStep->GetTrack()->GetParticleDefinition()->GetParticleName() != "neutron")
+    (aStep->GetTrack()->GetVolume()->GetLogicalVolume()->GetName() == "Detector")
+
+//    &&(aStep->GetTrack()->GetParticleDefinition()->GetParticleName() != "neutron")
 
             )
 
