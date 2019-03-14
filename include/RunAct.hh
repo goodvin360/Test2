@@ -30,7 +30,7 @@ public:
     G4double Emax = 20.0*MeV;
     double a = 0.00001;
     double b = 0.00002;
-    double c=0;
+
 
 
 private:

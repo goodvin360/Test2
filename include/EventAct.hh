@@ -21,7 +21,7 @@ public:
       void EndOfEventAction(const G4Event* anEvent);
       void AddEnDep1 (G4double en1);
       void AddEnDep2 (G4double en2);
-      G4double c =0;
+
 
 
 private:

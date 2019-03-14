@@ -1,5 +1,5 @@
-//#define OuterSpectra
-#define SingleEnergy
+#define OuterSpectra
+//#define SingleEnergy
 
 #ifndef CPROJECT_PRIMARYGEN_HH
 #define CPROJECT_PRIMARYGEN_HH

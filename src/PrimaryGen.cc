@@ -24,7 +24,7 @@ PrimaryGen::PrimaryGen()
 
 
    gun = new G4ParticleGun(1);
-   gun->SetParticleDefinition(G4Neutron::Neutron());
+   gun->SetParticleDefinition(G4Gamma::Gamma());
 
    gun->SetNumberOfParticles(1);
 
@@ -100,12 +100,12 @@ PrimaryGen::PrimaryGen()
 
     G4double **Spectr = new G4double*[FileSize];
 
-    for(G4int i =0; i <FileSize; i++)
+    for(G4int count =0; count <FileSize; count++)
     {
-        Spectr[i] = new G4double [2];
+        Spectr[count] = new G4double [2];
     }
 
-    infile1 >> E >> P;
+//    infile1 >> E >> P;
 
     for (int i = 0; i < FileSize; i++)
     {
@@ -243,8 +243,8 @@ void PrimaryGen::GeneratePrimaries(G4Event* anEvent)
     dY = b/Norm;
     dZ = c/Norm;
 
-//    gun->SetParticleMomentumDirection(G4ThreeVector(dX,dY,dZ));
-    gun->SetParticleMomentumDirection(G4ThreeVector(0,0,1));
+    gun->SetParticleMomentumDirection(G4ThreeVector(dX,dY,dZ));
+//    gun->SetParticleMomentumDirection(G4ThreeVector(0,0,1));
 
 
     gun->GeneratePrimaryVertex(anEvent);
