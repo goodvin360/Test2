@@ -252,7 +252,25 @@ logicWorld->SetVisAttributes(G4VisAttributes::Invisible);
 
 //    create an CYLLINDER detector
 
-    G4Material*det_mat = nist->FindOrBuildMaterial("G4_BGO");
+        G4String name, symbol;
+    G4double a, z, det_density;
+    G4int ncomponents;
+    G4int natoms;
+    a = 80.9058*g/mole;
+    G4Element*elY = new G4Element(name="Yttrium", symbol="Y", z = 39., a);
+    a = 26.9816*g/mole;
+    G4Element*elAl = new G4Element(name="Aluminium", symbol="Al", z = 13., a);
+    a = 16*g/mole;
+    G4Element*elO = new G4Element(name="Oxygen", symbol="O", z = 8., a);
+    a = 1*g/mole;
+    G4Element*elH = new G4Element(name="Hydrogen", symbol="H", z = 1., a);
+    det_density = 1.5*g/cm3;
+    G4Material*det_mat2 = new G4Material(name="Detector_material", det_density, ncomponents = 1);
+    det_mat2->AddElement(elH, natoms = 1);
+
+
+
+    G4Material*det_mat = nist->FindOrBuildMaterial("G4_POLYSTYRENE");
 
     G4ThreeVector det_pos = G4ThreeVector(0*cm, 0*cm, 10*cm);
 

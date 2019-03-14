@@ -15,6 +15,9 @@ public:
 
     void UserSteppingAction(const G4Step*);
 
+    G4double a =0;
+    G4double b =0;
+
 
 private:
 

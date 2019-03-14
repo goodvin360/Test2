@@ -14,15 +14,18 @@ void EventAct::BeginOfEventAction(const G4Event *anEvent)
 {
     EnergyDep1 = 0;
     EnergyDep2 = 0;
+    c += 1;
+    G4cout << "BeginOfEvent " << c << '\n';
 
 
 }
 
 void EventAct::EndOfEventAction(const G4Event *anEvent)
 {
-    //Run* run = static_cast<Run*>(G4RunManager::GetRunManager()->GetNonConstCurrentRun());
+//    Run* run = static_cast<Run*>(G4RunManager::GetRunManager()->GetNonConstCurrentRun());
     run->AddEvent1(EnergyDep1);
     run->AddEvent2(EnergyDep2);
+    G4cout << "EndOfEvent " << c << '\n';
 
 }
 
@@ -33,6 +36,6 @@ void EventAct::AddEnDep1(G4double en1)
 
 void EventAct::AddEnDep2(G4double en2)
 {
-    EnergyDep2 += en2;
+    EnergyDep2 = en2;
 }
 

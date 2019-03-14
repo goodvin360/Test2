@@ -24,7 +24,7 @@ PrimaryGen::PrimaryGen()
 
 
    gun = new G4ParticleGun(1);
-   gun->SetParticleDefinition(G4Gamma::Gamma());
+   gun->SetParticleDefinition(G4Neutron::Neutron());
 
    gun->SetNumberOfParticles(1);
 
@@ -243,8 +243,8 @@ void PrimaryGen::GeneratePrimaries(G4Event* anEvent)
     dY = b/Norm;
     dZ = c/Norm;
 
-    gun->SetParticleMomentumDirection(G4ThreeVector(dX,dY,dZ));
-//    gun->SetParticleMomentumDirection(G4ThreeVector(0,0,1));
+//    gun->SetParticleMomentumDirection(G4ThreeVector(dX,dY,dZ));
+    gun->SetParticleMomentumDirection(G4ThreeVector(0,0,1));
 
 
     gun->GeneratePrimaryVertex(anEvent);
