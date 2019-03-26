@@ -243,8 +243,8 @@ void PrimaryGen::GeneratePrimaries(G4Event* anEvent)
     dY = b/Norm;
     dZ = c/Norm;
 
-    gun->SetParticleMomentumDirection(G4ThreeVector(dX,dY,dZ));
-//    gun->SetParticleMomentumDirection(G4ThreeVector(0,0,1));
+//    gun->SetParticleMomentumDirection(G4ThreeVector(dX,dY,dZ));
+    gun->SetParticleMomentumDirection(G4ThreeVector(0,0,1));
 
 
     gun->GeneratePrimaryVertex(anEvent);

@@ -274,12 +274,12 @@ logicWorld->SetVisAttributes(G4VisAttributes::Invisible);
     G4Material*det_mat = nist->FindOrBuildMaterial("G4_POLYSTYRENE");
 
 
-    G4ThreeVector det_pos = G4ThreeVector(0*cm, 0*cm, 11.25*cm);
+    G4ThreeVector det_pos = G4ThreeVector(0*cm, 0*cm, 100*cm);
 
-//    G4Tubs*det = new G4Tubs("Detector", 0.0*cm, 2.5*cm, 5*cm,  0*deg, 360*deg);
-    G4Tubs*det = new G4Tubs("Detector", 0.0*cm, 1.25*cm, 1.25*cm,  0*deg, 360*deg);
+    G4Tubs*det = new G4Tubs("Detector", 0.0*cm, 2.5*cm, 5*cm,  0*deg, 360*deg);
+//    G4Tubs*det = new G4Tubs("Detector", 0.0*cm, 1.25*cm, 1.25*cm,  0*deg, 360*deg);
 
-    G4LogicalVolume*logicDet = new G4LogicalVolume(det, det_mat2, "Detector");
+    G4LogicalVolume*logicDet = new G4LogicalVolume(det, det_mat, "Detector");
 
     G4VisAttributes*logicVisDet = new G4VisAttributes(G4Colour(1.0, 0.0, 0.0));
 
