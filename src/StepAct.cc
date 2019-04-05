@@ -21,12 +21,15 @@ void StepAct::UserSteppingAction(const G4Step *aStep)
 
 
     if
-            (aStep->GetTrack()->GetVolume()->GetLogicalVolume()->GetName() == "Detector")
-
-
+                                (
+aStep->GetPreStepPoint()->GetPhysicalVolume()->GetName()=="World" &&
+        aStep->GetPostStepPoint()->GetStepStatus()==fGeomBoundary)
 
     {
-        event->AddEnDep2(aStep->GetTotalEnergyDeposit());
+
+        event->AddEnDep2(aStep->GetTrack()->GetKineticEnergy(), 1);
+
+
     };
 
 

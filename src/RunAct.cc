@@ -39,13 +39,13 @@ void RunAct::BeginOfRunAction(const G4Run *aRun)
     result2->clear();
     for (int i=0; i <nStep; i++)
         result2->insert(std::pair<G4double, G4int> (i *Emax / nStep, 0));
-
+   Num=0;
 }
 
 
 void RunAct::EndOfRunAction(const G4Run *aRun)
 {
-
+    G4cout <<"________________    "<< Num << G4endl;
     fstream fout1("/mnt/hgfs/VMplayer/Test2/Source.txt", ios::out);
 //    fstream fout1("../YAP.txt", ios::out);
     for (auto it1: *result1)
@@ -168,10 +168,12 @@ void RunAct::AddEvent1(G4double energy1)
     it1->second++;
 }
 
-void RunAct::AddEvent2(G4double energy2)
+void RunAct::AddEvent2(G4double energy2, G4double ncounts)
 {
     auto it2 = result2->lower_bound(energy2);
     it2->second++;
+    Num+=ncounts;
+
 }
 
 

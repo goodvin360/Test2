@@ -19,6 +19,7 @@ public:
     G4double b =0;
 
 
+
 private:
 
     EventAct* event;
