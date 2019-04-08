@@ -264,22 +264,27 @@ logicWorld->SetVisAttributes(G4VisAttributes::Invisible);
     G4Element*elO = new G4Element(name="Oxygen", symbol="O", z = 8., a);
     a = 1*g/mole;
     G4Element*elH = new G4Element(name="Hydrogen", symbol="H", z = 1., a);
-    det_density = 5.37*g/cm3;
-    G4Material*det_mat2 = new G4Material(name="Detector_material", det_density, ncomponents = 3);
-    det_mat2->AddElement(elY, natoms = 1);
-    det_mat2->AddElement(elAl, natoms = 1);
-    det_mat2->AddElement(elO, natoms = 3);
+//    det_density = 5.37*g/cm3;
+//    G4Material*det_mat2 = new G4Material(name="Detector_material", det_density, ncomponents = 3);
+//    det_mat2->AddElement(elY, natoms = 1);
+//    det_mat2->AddElement(elAl, natoms = 1);
+//    det_mat2->AddElement(elO, natoms = 3);
 
 
-    G4Material*det_mat = nist->FindOrBuildMaterial("G4_Galactic");
+    det_density = 1*g/cm3;
+    G4Material*det_mat2 = new G4Material(name="Detector_material", det_density, ncomponents = 1);
+    det_mat2->AddElement(elH, natoms = 1);
 
 
-    G4ThreeVector det_pos = G4ThreeVector(0*cm, 0*cm, 200*cm);
+    G4Material*det_mat = nist->FindOrBuildMaterial("G4_POLYSTYRENE");
+
+
+    G4ThreeVector det_pos = G4ThreeVector(0*cm, 0*cm, 10*cm);
 
     G4Tubs*det = new G4Tubs("Detector", 0.0*cm, 2.5*cm, 5*cm,  0*deg, 360*deg);
 //    G4Tubs*det = new G4Tubs("Detector", 0.0*cm, 1.25*cm, 1.25*cm,  0*deg, 360*deg);
 
-    G4LogicalVolume*logicDet = new G4LogicalVolume(det, det_mat, "Detector");
+    G4LogicalVolume*logicDet = new G4LogicalVolume(det, det_mat2, "Detector");
 
     G4VisAttributes*logicVisDet = new G4VisAttributes(G4Colour(1.0, 0.0, 0.0));
 
