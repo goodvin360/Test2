@@ -264,16 +264,16 @@ logicWorld->SetVisAttributes(G4VisAttributes::Invisible);
     G4Element*elO = new G4Element(name="Oxygen", symbol="O", z = 8., a);
     a = 1*g/mole;
     G4Element*elH = new G4Element(name="Hydrogen", symbol="H", z = 1., a);
-//    det_density = 5.37*g/cm3;
-//    G4Material*det_mat2 = new G4Material(name="Detector_material", det_density, ncomponents = 3);
-//    det_mat2->AddElement(elY, natoms = 1);
-//    det_mat2->AddElement(elAl, natoms = 1);
-//    det_mat2->AddElement(elO, natoms = 3);
+    det_density = 5.37*g/cm3;
+    G4Material*det_mat2 = new G4Material(name="Detector_material", det_density, ncomponents = 3);
+    det_mat2->AddElement(elY, natoms = 1);
+    det_mat2->AddElement(elAl, natoms = 1);
+    det_mat2->AddElement(elO, natoms = 3);
 
 
-    det_density = 1*g/cm3;
-    G4Material*det_mat2 = new G4Material(name="Detector_material", det_density, ncomponents = 1);
-    det_mat2->AddElement(elH, natoms = 1);
+//    det_density = 1*g/cm3;
+//    G4Material*det_mat2 = new G4Material(name="Detector_material", det_density, ncomponents = 1);
+//    det_mat2->AddElement(elH, natoms = 1);
 
 
     G4Material*det_mat = nist->FindOrBuildMaterial("G4_POLYSTYRENE");

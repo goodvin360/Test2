@@ -24,8 +24,19 @@ void StepAct::UserSteppingAction(const G4Step *aStep)
 
     if
                                 (
-aStep->GetPreStepPoint()->GetPhysicalVolume()->GetName()=="Detector" &&
-        aStep->GetTrack()->GetParticleDefinition()->GetParticleName()=="proton")
+aStep->GetPreStepPoint()->GetPhysicalVolume()->GetName()=="Detector" )
+
+    {
+
+        event->AddEnDep2(aStep->GetTotalEnergyDeposit(), 1);
+
+    };
+
+
+    if
+            (
+            aStep->GetPreStepPoint()->GetPhysicalVolume()->GetName()=="Detector" &&
+            aStep->GetTrack()->GetParticleDefinition()->GetParticleName()=="gamma")
 
     {
 
@@ -35,7 +46,6 @@ aStep->GetPreStepPoint()->GetPhysicalVolume()->GetName()=="Detector" &&
 
 
     };
-
 
 
 }

@@ -36,7 +36,7 @@ void EventAct::AddEnDep1(G4double en1)
 
 void EventAct::AddEnDep2(G4double en2, G4double n)
 {
-    EnergyDep2 = en2;
+    EnergyDep2 += en2;
     Ncounts += n;
 }
 

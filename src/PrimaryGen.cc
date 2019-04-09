@@ -24,12 +24,12 @@ PrimaryGen::PrimaryGen()
 
 
    gun = new G4ParticleGun(1);
-   gun->SetParticleDefinition(G4Neutron::Neutron());
+   gun->SetParticleDefinition(G4Gamma::Gamma());
 
    gun->SetNumberOfParticles(1);
 
 #ifdef SingleEnergy
-    gun->SetParticleEnergy(14*MeV);
+    gun->SetParticleEnergy(0.662*MeV);
 #endif
 
 #ifdef OuterSpectra
