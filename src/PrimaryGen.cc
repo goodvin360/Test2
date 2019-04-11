@@ -23,6 +23,8 @@ PrimaryGen::PrimaryGen()
     primarygenmessenger2 = new PrimaryGenMessenger2(this);
 
 
+
+
    gun = new G4ParticleGun(1);
    gun->SetParticleDefinition(G4Gamma::Gamma());
 
@@ -230,21 +232,15 @@ void PrimaryGen::GeneratePrimaries(G4Event* anEvent)
 //    gun->SetParticlePosition(G4ThreeVector(ux,uy,uz));
 
 
+    G4double cosTheta = 2*G4UniformRand()-1., phi = twopi*G4UniformRand();
+    G4double sinTheta = std::sqrt(1. - cosTheta*cosTheta);
+    G4double ux = sinTheta*std::cos(phi),
+            uy = sinTheta*std::sin(phi),
+            uz = cosTheta;
 
     gun->SetParticlePosition(G4ThreeVector(0,0,0));
 
-    double a,b,c, Norm, dX, dY, dZ;
-
-    a = 2*G4UniformRand()-1;
-    b = 2*G4UniformRand()-1;
-    c = 2*G4UniformRand()-1;
-    Norm = std::sqrt(a*a+b*b+c*c);
-    dX = a/Norm;
-    dY = b/Norm;
-    dZ = c/Norm;
-
-    gun->SetParticleMomentumDirection(G4ThreeVector(dX,dY,dZ));
-//    gun->SetParticleMomentumDirection(G4ThreeVector(0,0,1));
+    gun->SetParticleMomentumDirection(G4ThreeVector(ux,uy,uz));
 
 
     gun->GeneratePrimaryVertex(anEvent);

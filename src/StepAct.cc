@@ -33,20 +33,6 @@ aStep->GetPreStepPoint()->GetPhysicalVolume()->GetName()=="Detector" )
     };
 
 
-    if
-            (
-            aStep->GetPreStepPoint()->GetPhysicalVolume()->GetName()=="Detector" &&
-            aStep->GetTrack()->GetParticleDefinition()->GetParticleName()=="gamma")
-
-    {
-
-        event->AddEnDep2(aStep->GetTrack()->GetKineticEnergy(), 1);
-
-        theTrack->SetTrackStatus(fKillTrackAndSecondaries);
-
-
-    };
-
 
 }
 
