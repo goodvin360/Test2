@@ -276,7 +276,7 @@ logicWorld->SetVisAttributes(G4VisAttributes::Invisible);
 //    det_mat2->AddElement(elH, natoms = 1);
 
 
-    G4Material*det_mat = nist->FindOrBuildMaterial("G4_Galactic");
+    G4Material*det_mat = nist->FindOrBuildMaterial("G4_POLYSTYRENE");
 
 
     G4ThreeVector det_pos = G4ThreeVector(0*cm, 0*cm, 10*cm);

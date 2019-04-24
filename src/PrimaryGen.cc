@@ -26,12 +26,12 @@ PrimaryGen::PrimaryGen()
 
 
    gun = new G4ParticleGun(1);
-   gun->SetParticleDefinition(G4Gamma::Gamma());
+   gun->SetParticleDefinition(G4Neutron::Neutron());
 
    gun->SetNumberOfParticles(1);
 
 #ifdef SingleEnergy
-    gun->SetParticleEnergy(0.662*MeV);
+    gun->SetParticleEnergy(14*MeV);
 #endif
 
 #ifdef OuterSpectra
@@ -240,7 +240,8 @@ void PrimaryGen::GeneratePrimaries(G4Event* anEvent)
 
     gun->SetParticlePosition(G4ThreeVector(0,0,0));
 
-    gun->SetParticleMomentumDirection(G4ThreeVector(ux,uy,uz));
+//    gun->SetParticleMomentumDirection(G4ThreeVector(ux,uy,uz));
+    gun->SetParticleMomentumDirection(G4ThreeVector(0,0,1));
 
 
     gun->GeneratePrimaryVertex(anEvent);

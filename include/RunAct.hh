@@ -24,13 +24,13 @@ public:
 
     void AddEvent1(G4double energy1);
 
-    void AddEvent2(G4double energy2, G4double ncounts);
+    void AddEvent2(G4double energy2);
 
     int nStep = 2000;
     G4double Emax = 20.0*MeV;
     double a = 0.00001;
     double b = 0.00002;
-    int Num;
+
 
 
 
