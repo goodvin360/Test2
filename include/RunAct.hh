@@ -24,21 +24,22 @@ public:
 
     void AddEvent1(G4double energy1);
 
-    void AddEvent2(G4double energy2);
+//    void AddEvent2(G4double energy2, G4int count2);
+     void AddEvent2(G4double energy2);
 
     int nStep = 2000;
     G4double Emax = 20.0*MeV;
-    double a = 0.00001;
-    double b = 0.00002;
-
-
+    double a = 0.01;
+    double b = 0.002;
 
 
 private:
 
     std::map <G4double, G4int> *result1;
-
     std::map <G4double, G4int> *result2;
+
+//    G4double*REnergy=new G4double [nStep];
+//    G4int*RCounts=new G4int [nStep];
 
 };
 

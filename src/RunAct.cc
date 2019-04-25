@@ -15,7 +15,6 @@ RunAct::RunAct()
 
     result2 = new std::map<G4double, G4int>;
 
-
 }
 
 RunAct::~RunAct()
@@ -24,12 +23,14 @@ RunAct::~RunAct()
 
     delete result2;
 
+//    delete [] REnergy;
+//    delete [] RCounts;
+
 
 }
 
-void RunAct::BeginOfRunAction(const G4Run *aRun)
+void RunAct::BeginOfRunAction(const G4Run *)
 {
-
 
     result1->clear();
 
@@ -40,10 +41,15 @@ void RunAct::BeginOfRunAction(const G4Run *aRun)
     for (int i=0; i <nStep; i++)
         result2->insert(std::pair<G4double, G4int> (i *Emax / nStep, 0));
 
+//    for(int i=0; i<nStep; i++)
+//    {
+//        REnergy[i] = i * Emax / nStep;
+//        RCounts[i] = 0;
+//    }
 }
 
 
-void RunAct::EndOfRunAction(const G4Run *aRun)
+void RunAct::EndOfRunAction(const G4Run *)
 {
 
     fstream fout1("/mnt/hgfs/VMplayer/Test2/Source.txt", ios::out);
@@ -57,6 +63,12 @@ void RunAct::EndOfRunAction(const G4Run *aRun)
     for (auto it2: *result2)
         fout2 << it2.first << " " << it2.second << '\n';
     fout2.close();
+
+//    fstream fout3("/mnt/hgfs/VMplayer/Test2/DetectorArray.txt", ios::out);
+////    fstream fout2("../CH.txt", ios::out);
+//    for (int i=0; i<nStep; i++)
+//        fout3 << REnergy[i] << " " << RCounts[i] << '\n';
+//    fout3.close();
 
     auto P1 = new double *[nStep];
     for (int i = 0; i < nStep; i++) {
@@ -81,6 +93,7 @@ void RunAct::EndOfRunAction(const G4Run *aRun)
         infile1 >> E >> Cnt;
         Energy[i] = E;
         Counts[i] = Cnt;
+        Counts[0] = 0;
     }
 
     infile1.close();
@@ -141,15 +154,15 @@ void RunAct::EndOfRunAction(const G4Run *aRun)
 
 
 
-        fstream fout3 ("/mnt/hgfs/VMplayer/Test2/DetectorNorm.txt", ios::out);
+    fstream fout3 ("/mnt/hgfs/VMplayer/Test2/DetectorNorm.txt", ios::out);
 
 
-        for (int i = 0; i < nStep; i++) {
+    for (int i = 0; i < nStep; i++) {
 
         fout3 << Energy[i] << '\t'<< NormCounts[i] << '\n';
 
-        }
-        fout3.close();
+    }
+    fout3.close();
 
 
     for (int i = 0; i < nStep; i++) { delete[] P1[i]; }
@@ -168,13 +181,27 @@ void RunAct::AddEvent1(G4double energy1)
     it1->second++;
 }
 
+//void RunAct::AddEvent2(G4double energy2, G4int count2)
+//{
+//    auto it2 = result2->lower_bound(energy2);
+//    it2->second++;
+//
+//    for (int i=0; i<nStep; i++)
+//
+//    {
+//        if (REnergy[i] == energy2)
+//        {
+//            RCounts[i] += count2;
+//        }
+//    }
+//
+//}
+
 void RunAct::AddEvent2(G4double energy2)
 {
     auto it2 = result2->lower_bound(energy2);
     it2->second++;
-
 }
-
 
 
 
