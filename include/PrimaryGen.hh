@@ -44,6 +44,8 @@ private:
 
    G4ParticleGun*  gun;
 
+   G4GeneralParticleSource* GPSGun;
+
    PrimaryGenMessenger1 * primarygenmessenger1;
 
    PrimaryGenMessenger2 * primarygenmessenger2;

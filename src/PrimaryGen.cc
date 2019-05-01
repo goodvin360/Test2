@@ -23,7 +23,7 @@ PrimaryGen::PrimaryGen()
     primarygenmessenger2 = new PrimaryGenMessenger2(this);
 
 
-
+    GPSGun= new G4GeneralParticleSource();
 
    gun = new G4ParticleGun(1);
    gun->SetParticleDefinition(G4Neutron::Neutron());
@@ -177,6 +177,8 @@ delete gun;
 delete primarygenmessenger1;
 delete primarygenmessenger2;
 
+delete GPSGun;
+
 }
 
 void PrimaryGen::GeneratePrimaries(G4Event* anEvent)
@@ -244,8 +246,8 @@ void PrimaryGen::GeneratePrimaries(G4Event* anEvent)
 //    gun->SetParticleMomentumDirection(G4ThreeVector(0,0,1));
 
 
-    gun->GeneratePrimaryVertex(anEvent);
-
+//    gun->GeneratePrimaryVertex(anEvent);
+GPSGun->GeneratePrimaryVertex(anEvent);
 
 
     Counter += 1;
